@@ -1,0 +1,74 @@
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+    form {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    button[type="submit"] {
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+    }
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    .error {
+      color: #f00;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <h2>Login</h2>
+    {% if form.non_field_errors %}
+      <p class="error">{{ form.non_field_errors }}</p>
+    {% endif %}
+    <label for="{{ form.username.id_for_label }}">Username:</label>
+    {{ form.username }}
+    {% if form.username.errors %}
+      <p class="error">{{ form.username.errors }}</p>
+    {% endif %}
+    <label for="{{ form.password.id_for_label }}">Password:</label>
+    {{ form.password }}
+    {% if form.password.errors %}
+      <p class="error">{{ form.password.errors }}</p>
+    {% endif %}
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>

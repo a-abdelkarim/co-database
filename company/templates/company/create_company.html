@@ -1,0 +1,204 @@
+<html>
+<head>
+  <title>Create Company</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+    form {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"] {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    select {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    textarea {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+    button[type="submit"] {
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+    }
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    .error {
+      color: #f00;
+      margin-bottom: 10px;
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .form-row label {
+      flex-basis: 100%;
+    }
+    .form-row input {
+      flex-basis: 100%;
+    }
+    .form-row select {
+      flex-basis: 100%;
+    }
+    .form-row textarea {
+      flex-basis: 100%;
+    }
+    .form-row input[type="text"].half-width {
+      flex-basis: calc(50% - 10px);
+      margin-right: 20px;
+    }
+    .form-row input[type="text"].quarter-width {
+      flex-basis: calc(25% - 10px);
+      margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.name.label_tag }}
+          {{ form.name }}
+          {% if form.name.errors %}
+            <p class="text-danger">{{ form.name.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.description.label_tag }}
+          {{ form.description }}
+          {% if form.description.errors %}
+            <p class="text-danger">{{ form.description.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.activity.label_tag }}
+          {{ form.activity }}
+          {% if form.activity.errors %}
+            <p class="text-danger">{{ form.activity.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.category.label_tag }}
+          {{ form.category }}
+          {% if form.category.errors %}
+            <p class="text-danger">{{ form.category.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.address.label_tag }}
+          {{ form.address }}
+          {% if form.address.errors %}
+            <p class="text-danger">{{ form.address.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            {{ form.country.label_tag }}
+            {{ form.country }}
+            {% if form.country.errors %}
+              <p class="text-danger">{{ form.country.errors }}</p>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-4">
+            {{ form.state.label_tag }}
+            {{ form.state }}
+            {% if form.state.errors %}
+              <p class="text-danger">{{ form.state.errors }}</p>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-4">
+            {{ form.city.label_tag }}
+            {{ form.city }}
+            {% if form.city.errors %}
+              <p class="text-danger">{{ form.city.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            {{ form.street.label_tag }}
+            {{ form.street }}
+            {% if form.street.errors %}
+              <p class="text-danger">{{ form.street.errors }}</p>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-3">
+            {{ form.building_no.label_tag }}
+            {{ form.building_no }}
+            {% if form.building_no.errors %}
+              <p class="text-danger">{{ form.building_no.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            {{ form.phone.label_tag }}
+            {{ form.phone }}
+            {% if form.phone.errors %}
+              <p class="text-danger">{{ form.phone.errors }}</p>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-4">
+            {{ form.website.label_tag }}
+            {{ form.website }}
+            {% if form.website.errors %}
+              <p class="text-danger">{{ form.website.errors }}</p>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-4">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {% if form.email.errors %}
+              <p class="text-danger">{{ form.email.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+</body>
+</html>
