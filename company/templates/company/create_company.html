@@ -197,6 +197,22 @@
             {% endif %}
           </div>
         </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            {{ form.latitude.label_tag }}
+            {{ form.latitude }}
+            {% if form.latitude.errors %}
+              <p class="text-danger">{{ form.latitude.errors }}</p>
+            {% endif %}
+          </div>
+          <div class="form-group col-md-4">
+            {{ form.longitude.label_tag }}
+            {{ form.longitude }}
+            {% if form.longitude.errors %}
+              <p class="text-danger">{{ form.longitude.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
         
         <button type="submit" class="btn btn-primary">Create</button>
       </form>

@@ -18,6 +18,8 @@ class CompanyForm(forms.ModelForm):
             'phone',
             'website',
             'email',
+            'latitude',
+            'longitude'
         ]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -33,6 +35,8 @@ class CompanyForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'class': 'form-control'}),
             'website': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'latitude': forms.TextInput(attrs={'class': 'form-control'}),
+            'longitude': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
             'name': 'Company Name',
@@ -48,4 +52,6 @@ class CompanyForm(forms.ModelForm):
             'phone': 'Phone',
             'website': 'Website',
             'email': 'Email',
+            'latitude': 'Latitude',
+            'longitude': 'Longitude',
         }

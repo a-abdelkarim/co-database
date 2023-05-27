@@ -16,6 +16,8 @@ class Company(models.Model):
     phone = models.CharField(max_length=255)
     website = models.CharField(max_length=255)
     email = models.EmailField()
+    latitude = models.FloatField(default=0.0)
+    longitude = models.FloatField(default=0.0)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
