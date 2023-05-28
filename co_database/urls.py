@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 from accounts.views import user_login
+from co_database import settings
 from company.views import create_company
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', user_login, name='login'),
     path('create_company/', create_company, name='create_company')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

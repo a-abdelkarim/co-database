@@ -5,6 +5,7 @@ from cities_light.models import Country
 class Company(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
+    photo = models.ImageField(upload_to="images/company/", default='images/no_image.png')
     activity = models.CharField(max_length=255)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     address = models.CharField(max_length=255)
