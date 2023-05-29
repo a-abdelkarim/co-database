@@ -128,12 +128,21 @@
             <p class="text-danger">{{ form.activity.errors }}</p>
           {% endif %}
         </div>
-        <div class="form-group">
-          {{ form.category.label_tag }}
-          {{ form.category }}
-          {% if form.category.errors %}
-            <p class="text-danger">{{ form.category.errors }}</p>
-          {% endif %}
+        <div class="form-row">
+          <div class="form-group">
+            {{ form.category.label_tag }}
+            {{ form.category }}
+            {% if form.category.errors %}
+              <p class="text-danger">{{ form.category.errors }}</p>
+            {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.sub_category.label_tag }}
+            {{ form.sub_category }}
+            {% if form.sub_category.errors %}
+              <p class="text-danger">{{ form.sub_category.errors }}</p>
+            {% endif %}
+          </div>
         </div>
         <div class="form-group">
           {{ form.address.label_tag }}

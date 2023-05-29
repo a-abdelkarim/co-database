@@ -1,7 +1,20 @@
 from django import forms
-from .models import Company
+from .models import Company, Category, SubCategory
 
 class CompanyForm(forms.ModelForm):
+    category = forms.ModelChoiceField(queryset=Category.objects.all())
+    subcategory = forms.ModelChoiceField(queryset=SubCategory.objects.none())
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'category' in self.data:
+            try:
+                category_id = int(self.data.get('category'))
+                self.fields['sub_category'].queryset = SubCategory.objects.filter(category_id=category_id)
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['sub_category'].queryset = self.instance.category.subcategories
     class Meta:
         model = Company
         fields = [
@@ -10,6 +23,7 @@ class CompanyForm(forms.ModelForm):
             'photo', 
             'activity', 
             'category',
+            'sub_category',
             'address',
             'country',
             'state',
@@ -28,6 +42,7 @@ class CompanyForm(forms.ModelForm):
             'photo': forms.FileInput(attrs={'class': 'form-control', 'rows': 3}),
             'activity': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
+            'sub_category': forms.Select(attrs={'class': 'form-control'}),
             'address': forms.TextInput(attrs={'class': 'form-control'}),
             'country': forms.TextInput(attrs={'class': 'form-control'}),
             'state': forms.TextInput(attrs={'class': 'form-control'}),
@@ -46,6 +61,7 @@ class CompanyForm(forms.ModelForm):
             'photo': 'Photo',
             'activity': 'Activity',
             'category': 'Category',
+            'sub_category': 'Sub Category',
             'address': 'Address',
             'country': 'Country',
             'state': 'State/Province',

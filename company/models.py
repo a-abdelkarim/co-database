@@ -8,6 +8,7 @@ class Company(models.Model):
     photo = models.ImageField(upload_to="images/company/", default='images/no_image.png')
     activity = models.CharField(max_length=255)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    sub_category = models.ForeignKey('SubCategory', on_delete=models.CASCADE)
     address = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
@@ -25,8 +26,16 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+    
+class SubCategory(models.Model):
+    name = models.CharField(max_length=150)
+    parent_category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.name

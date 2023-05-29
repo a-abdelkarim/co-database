@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Company, Category
+from .models import Company, Category, SubCategory
 
 class CompanyAdmin(admin.ModelAdmin):
     list_display = ('name', 'activity', 'category', 'created_by', 'created_at')
@@ -8,6 +8,10 @@ class CompanyAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    
+class SubCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
 
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(SubCategory, CategoryAdmin)
