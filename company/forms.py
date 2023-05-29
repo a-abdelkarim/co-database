@@ -7,6 +7,7 @@ class CompanyForm(forms.ModelForm):
         fields = [
             'name', 
             'description', 
+            'photo', 
             'activity', 
             'category',
             'address',
@@ -24,6 +25,7 @@ class CompanyForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'photo': forms.FileInput(attrs={'class': 'form-control', 'rows': 3}),
             'activity': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
             'address': forms.TextInput(attrs={'class': 'form-control'}),
@@ -41,6 +43,7 @@ class CompanyForm(forms.ModelForm):
         labels = {
             'name': 'Company Name',
             'description': 'Description',
+            'photo': 'Photo',
             'activity': 'Activity',
             'category': 'Category',
             'address': 'Address',
